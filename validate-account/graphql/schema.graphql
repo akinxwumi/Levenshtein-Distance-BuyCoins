@@ -1,0 +1,28 @@
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    users: [User!]! @all
+    user(user_bank_code: Int, user_account_number: Int @eq): User @find
+}
+type User {
+  id: ID!
+  is_verified:Boolean!
+  user_account_number: String!
+  user_account_name: String!
+  paystack_account_name: String!
+  user_bank_code: Int!
+}
+
+type Mutation {
+  createUser(
+      is_verified:Boolean!
+      user_account_number: String!
+      user_account_name: String!
+      paystack_account_name: String!
+      user_bank_code: Int!
+      ): User @create
+}
