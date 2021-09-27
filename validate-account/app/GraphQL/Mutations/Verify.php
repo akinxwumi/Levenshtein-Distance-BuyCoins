@@ -78,12 +78,12 @@ class Verify
 
 	private function createUser(){
         $user = new User;
-        $user->is_verified ="true";
+        $user->is_verified =TRUE;
 		$user->user_account_number = $this->account['user_account_number'];
 		$user->user_account_name = ucwords(strtolower($this->account['user_account_name']));
 		$user->paystack_account_name = ucwords(strtolower($this->paystack->data->account_name));
 		$user->user_bank_code = $this->account['user_bank_code'];
         $user->save();
-		return $user->is_verified;
+		return "True";
     }
 }
