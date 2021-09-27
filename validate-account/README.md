@@ -1,3 +1,5 @@
+**In 100 words or less, provide an answer to this in your readme: What's a good reason why  the pure Levenshtein Distance algorithm might be a more effective solution than the broader Damerau–Levenshtein Distance algorithm in this specific scenario**
+
 Spelling errors are classified into 4 descriptive types: 
 
 - **Deletion:** Removing one letter
