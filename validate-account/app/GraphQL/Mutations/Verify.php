@@ -78,8 +78,8 @@ class Verify
 
 	private function createUser(){
         $user = new User;
-		
-		if($users = User::where('user_account_number', $this->account['user_account_number'])->get()){
+		$users = User::where('user_account_number', $this->account['user_account_number'])->first();
+		if($users){
 			return "Account already verified";
 		}
 		else{
