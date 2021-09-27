@@ -18,11 +18,9 @@ type User {
 }
 
 type Mutation {
-  createUser(
-      is_verified:Boolean!
-      user_account_number: String!
+    verify(
       user_account_name: String!
-      paystack_account_name: String!
-      user_bank_code: Int!
-      ): User @create
+      user_account_number: String!
+      user_bank_code: String!
+    ):String!
 }

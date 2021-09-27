@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class validateAccountBuycoins extends Controller
+class Validate extends Controller
 {
-	private function getAccountDetails(){
-	//function to get account details (account_number, bank_name, account_name) from a GraphQL mutation	
+	public function getAccountDetails($args){
+	//function to get account details (account_number, bank_name, account_name) from a GraphQL mutation
+	return json_decode($args);
 	}
 
-    private function callPaystackApi(){
+    public function callPaystackApi(){
 
     	/*
     	Receive bank_code and account_number from getAccountDetails()
     	call paystack api to verify account and return response to levenshteinDistance()
     	*/
 
-    	curl = curl_init();
+    	$curl = curl_init();
 
   		//disables SSL Certificate Verification
   		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -76,20 +77,20 @@ class validateAccountBuycoins extends Controller
 	  }
 	}
 
-	private function validateAccountName(){
+	public function validateAccountName(){
 		/*
 		check if the account_name from getAccountDetails() matches the one from Paystack's API. If it matches, pass a response to addAccountDetails() else, calcLevenshteinDistance()
 		*/
 	}
 
 
-	private function calcLevenshteinDistance(){
+	public function calcLevenshteinDistance(){
 		/*
 		calculate the LD between account_name from getAccountDetails and callPaystackApi. If it is <=2 pass the response to addAccountDetails() else, 
 		*/
 	}
 
-	private function addAccountDetails(){
+	public function addAccountDetails(){
 		/*
 		if LD is <=2, pass account details and set is_verified attribute to true for the GraphQL mutation else, set is_verified to false
 		Attributes in the mutation will be is_verified, user_account_name, user_account_number, paystack_account_number and user_bank_code
@@ -97,7 +98,7 @@ class validateAccountBuycoins extends Controller
 		*/
 	}
 
-	private function returnAccountName(){
+	public function returnAccountName(){
 	/*
 	Call the GraphQL mutation to query for user_account_name paystack_account_name using the user_bank_code and user_account_number parameter. If user_account_name is available, return it else, it return paystack_account_name.	
 	Please note that the query must check for user_account_name not this function
@@ -105,7 +106,7 @@ class validateAccountBuycoins extends Controller
 	}
 
 
-	private function basicUnitTests(){
+	public function basicUnitTests(){
 	//basic unit testing		
 	}
 

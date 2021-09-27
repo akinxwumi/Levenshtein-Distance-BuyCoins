@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_verified');
-            $table->string('user_account_number')->unique();
+            $table->string('user_account_number');
             $table->string('user_account_name');
             $table->string('paystack_account_name');
-            $table->integer('user_bank_code');
+            $table->string('user_bank_code');
         });
     }
 
