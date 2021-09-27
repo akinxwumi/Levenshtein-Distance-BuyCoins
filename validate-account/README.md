@@ -9,7 +9,7 @@ The Levenshtein Distance algorithm measures the similarity between two strings A
 
 **GraphQL endpoint**
 https://glacial-everglades-33318.herokuapp.com/graphql-playground
-Please note: you've to change URL to https before sending requests
+please note: you've to change URL to https before sending requests
 
 **Assumptions**
 I assumed that I don't need to write a test for the levenstein-distance implementation since I used an inbuilt PHP function
