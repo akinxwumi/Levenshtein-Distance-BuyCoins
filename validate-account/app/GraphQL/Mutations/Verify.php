@@ -78,6 +78,11 @@ class Verify
 
 	private function createUser(){
         $user = new User;
+		
+		if($users = User::where('user_account_number', $this->account['user_account_number'])->get()){
+			return "Account already verified";
+		}
+		else{
         $user->is_verified =TRUE;
 		$user->user_account_number = $this->account['user_account_number'];
 		$user->user_account_name = ucwords(strtolower($this->account['user_account_name']));
@@ -85,5 +90,6 @@ class Verify
 		$user->user_bank_code = $this->account['user_bank_code'];
         $user->save();
 		return "True";
+		}
     }
 }
